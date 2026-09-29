@@ -1,0 +1,12 @@
+{
+  "name": "Nigar Gold Savings",
+  "short_name": "Nigar Gold",
+  "description": "Nigar Gems & Jewellers Gold Savings Management",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f5efe6",
+  "theme_color": "#5a0710",
+  "lang": "en-IN"
+}

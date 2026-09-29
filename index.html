@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#5a0710"><link rel="manifest" href="manifest.json">
+<title>Nigar Gold Savings</title>
+<style>
+:root{--m:#5a0710;--g:#c89b3c;--bg:#f5efe6;--card:#fff;--ink:#281b1b}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:Arial;color:var(--ink)}
+header{background:linear-gradient(135deg,#46050a,#7c1420);color:#fff;padding:15px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:2}
+header img{width:52px;height:52px;border-radius:9px;object-fit:cover}h1{font:700 21px Georgia;margin:0;color:#f2d58c}header small{display:block;margin-top:3px;font-size:11px}
+nav{display:flex;gap:6px;overflow:auto;padding:9px;background:#fff;border-bottom:1px solid #eadcc6;position:sticky;top:82px;z-index:1}
+nav button{white-space:nowrap;border:0;border-radius:20px;padding:9px 13px;background:#eee4d5;font-weight:bold}nav button.active{background:var(--m);color:#fff}
+main{max-width:1100px;margin:auto;padding:14px}.screen{display:none}.screen.active{display:block}.card{background:#fff;border:1px solid #eadcc6;border-radius:14px;padding:15px;margin-bottom:14px;box-shadow:0 3px 13px #0001}
+h2{font:700 19px Georgia;color:var(--m);margin:0 0 13px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+label{font-size:11px;font-weight:bold;display:block;margin:7px 0 4px}input,select{width:100%;padding:11px;border:1px solid #d5c5aa;border-radius:8px;background:#fff}
+button{cursor:pointer;border:0;border-radius:8px;padding:11px 14px;font-weight:bold}.primary{background:var(--m);color:#fff}.gold{background:var(--g);color:#241800}.light{background:#eee5d8}.danger{background:#9e2222;color:#fff}
+.actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}.stat{background:#fff8e8;border:1px solid #ead7ad;padding:13px;border-radius:12px}.stat b{display:block;color:var(--m);font-size:20px;margin-top:4px}
+table{width:100%;border-collapse:collapse;font-size:12px}th,td{padding:8px;border-bottom:1px solid #eadfce;text-align:left}th{background:#f8f0df}
+.scroll{overflow:auto}.login{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}.loginbox{max-width:380px;width:100%;background:#fff;padding:25px;border-radius:18px;text-align:center;box-shadow:0 5px 25px #0002}.loginbox img{width:75px;height:75px;border-radius:10px;object-fit:cover}.hidden{display:none!important}.err{color:#a11;min-height:18px;font-size:12px}
+.message{white-space:pre-wrap;background:#fffdf7;border:1px dashed #c9a65e;padding:12px;border-radius:9px;font-size:13px}
+@media(max-width:750px){.grid{grid-template-columns:1fr 1fr}.stats{grid-template-columns:1fr 1fr}}@media(max-width:500px){.grid{grid-template-columns:1fr}}
+</style></head>
+<body>
+<div id="login" class="login"><div class="loginbox"><img src="logo.jpg"><h2>NIGAR GEMS & JEWELLERS</h2><p>Gold Savings Management App</p><label>Username</label><input id="u" value="admin"><label>Password</label><input id="pw" type="password"><div class="err" id="err"></div><button class="primary" style="width:100%;margin-top:9px" onclick="login()">Login</button><p style="font-size:11px;color:#777">Demo: admin / Nigar@123</p></div></div>
+
+<div id="app" class="hidden">
+<header><img src="logo.jpg"><div><h1>NIGAR GEMS & JEWELLERS</h1><small>Kafla Bazar, Cuttack • 7978786142</small></div><button class="light" style="margin-left:auto" onclick="logout()">Logout</button></header>
+<nav>
+<button class="active" onclick="tab('dashboard',this)">Dashboard</button><button onclick="tab('customer',this)">Customer</button><button onclick="tab('payment',this)">Payment</button><button onclick="tab('ledger',this)">Ledger</button><button onclick="tab('settings',this)">Settings</button>
+</nav>
+<main>
+<section id="dashboard" class="screen active"><div class="stats"><div class="stat">Customers<b id="sc">0</b></div><div class="stat">Payments<b id="sp">0</b></div><div class="stat">Collected<b id="sa">₹0</b></div><div class="stat">Today<b id="st">₹0</b></div></div><div class="card" style="margin-top:14px"><h2>Recent Payments</h2><div class="scroll"><table><thead><tr><th>Date</th><th>Customer</th><th>Receipt</th><th>Amount</th></tr></thead><tbody id="recent"></tbody></table></div></div></section>
+
+<section id="customer" class="screen"><div class="card"><h2>Register / Update Customer</h2><div class="grid">
+<div><label>Customer ID</label><input id="cid"></div><div><label>Customer Name</label><input id="cn"></div><div><label>WhatsApp Mobile</label><input id="cm" placeholder="91XXXXXXXXXX"></div>
+<div><label>Scheme</label><select id="cs"><option>Nigar Arambh</option><option>Nigar Unnati</option><option>Nigar Sikhar</option></select></div><div><label>Duration</label><select id="cd"><option>7 Months</option><option>12 Months</option><option>24 Months</option></select></div>
+<div><label>Installment</label><select id="ca"><option>1000</option><option>2000</option><option>3000</option><option>5000</option><option>10000</option><option>20000</option><option>25000</option><option>30000</option><option>35000</option><option>50000</option><option>100000</option><option>200000</option></select></div>
+<div><label>Start Date</label><input id="cdate" type="date"></div><div><label>Nominee</label><input id="nom"></div></div>
+<div class="actions"><button class="gold" onclick="saveCustomer()">Save Customer</button><button class="light" onclick="clearCustomer()">Clear</button></div></div></section>
+
+<section id="payment" class="screen"><div class="card"><h2>Receive Payment</h2><div class="grid">
+<div><label>Customer ID</label><input id="pcid"></div><div><label>Installment No.</label><input id="pi" type="number" value="1"></div><div><label>Amount</label><input id="pa" type="number"></div>
+<div><label>Date</label><input id="pd" type="date"></div><div><label>Receipt No.</label><input id="pr" placeholder="Auto"></div></div>
+<div class="actions"><button class="primary" onclick="receive()">Record Payment & WhatsApp</button></div><div id="preview" class="message" style="margin-top:12px">Payment message will appear here.</div></div></section>
+
+<section id="ledger" class="screen"><div class="card"><h2>Customer Ledger</h2><input id="find" placeholder="Search customer..." oninput="renderLedger()"><div class="scroll"><table><thead><tr><th>ID</th><th>Name</th><th>Mobile</th><th>Scheme</th><th>Installment</th><th>Total Paid</th></tr></thead><tbody id="ledgerBody"></tbody></table></div></div></section>
+
+<section id="settings" class="screen"><div class="card"><h2>App Settings</h2><p><b>Business:</b> Nigar Gems & Jewellers</p><p><b>Address:</b> Kafla Bazar, Cuttack</p><p><b>Mobile:</b> 7978786142</p><p><b>Email:</b> nigarjewellers.in@gmail.com</p><p><b>GSTIN:</b> 21AGAFS5666G1Z0</p><div class="actions"><button class="gold" onclick="backup()">Export Backup</button><button class="light" onclick="install()">Install App</button><button class="danger" onclick="wipe()">Delete Local Data</button></div></div></section>
+</main></div>
+<script>
+const $=id=>document.getElementById(id),CK="nigar_app_customers",PK="nigar_app_payments";let C=JSON.parse(localStorage.getItem(CK)||"[]"),P=JSON.parse(localStorage.getItem(PK)||"[]"),deferred=null;
+window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferred=e});
+function login(){if($("u").value==="admin"&&$("pw").value==="Nigar@123"){sessionStorage.nigar="1";show()}else $("err").textContent="Invalid login"}
+function show(){if(sessionStorage.nigar){$("login").classList.add("hidden");$("app").classList.remove("hidden");render()}}function logout(){sessionStorage.removeItem("nigar");location.reload()}
+function tab(id,b){document.querySelectorAll(".screen").forEach(x=>x.classList.remove("active"));$(id).classList.add("active");document.querySelectorAll("nav button").forEach(x=>x.classList.remove("active"));b.classList.add("active");render()}
+function money(x){return "₹"+Number(x||0).toLocaleString("en-IN")}function save(){localStorage.setItem(CK,JSON.stringify(C));localStorage.setItem(PK,JSON.stringify(P))}
+function saveCustomer(){let c={id:$("cid").value.trim(),name:$("cn").value.trim(),mobile:$("cm").value.replace(/\D/g,""),scheme:$("cs").value,duration:$("cd").value,amount:Number($("ca").value),start:$("cdate").value,nominee:$("nom").value.trim()};if(!c.id||!c.name||!c.mobile)return alert("ID, name and mobile are required.");let i=C.findIndex(x=>x.id===c.id);i>=0?C[i]=c:C.push(c);save();clearCustomer();render();alert("Customer saved")}
+function clearCustomer(){["cid","cn","cm","nom"].forEach(x=>$(x).value="")}
+function receive(){let id=$("pcid").value.trim(),c=C.find(x=>x.id===id);if(!c)return alert("Customer not found");let amt=Number($("pa").value||c.amount),date=$("pd").value||new Date().toISOString().slice(0,10),inst=Number($("pi").value||1),receipt=$("pr").value||"NGJ-R"+String(P.length+1).padStart(5,"0");let total=P.filter(x=>x.cid===id).reduce((s,x)=>s+x.amount,0)+amt;P.push({cid:id,amount:amt,date,inst,receipt});save();let msg=`💎 NIGAR GEMS & JEWELLERS\n\nPayment Received Successfully\n\nDear ${c.name},\n\nScheme: ${c.scheme}\nInstallment No.: ${inst}\nAmount Paid: ${money(amt)}\nPayment Date: ${date}\nReceipt No.: ${receipt}\nTotal Paid Till Date: ${money(total)}\nDuration: ${c.duration}\n\nYour payment has been successfully received and recorded.\n\nThank you for choosing NIGAR GEMS & JEWELLERS.\nYour Dreams ✦ Our Commitment\n\n📍 Kafla Bazar, Cuttack\n📞 7978786142\n✉️ nigarjewellers.in@gmail.com\nGSTIN: 21AGAFS5666G1Z0`;$("preview").textContent=msg;window.open("https://wa.me/"+c.mobile+"?text="+encodeURIComponent(msg),"_blank");render()}
+function render(){let total=P.reduce((s,x)=>s+x.amount,0),today=new Date().toISOString().slice(0,10);$("sc").textContent=C.length;$("sp").textContent=P.length;$("sa").textContent=money(total);$("st").textContent=money(P.filter(x=>x.date===today).reduce((s,x)=>s+x.amount,0));$("recent").innerHTML=P.slice(-10).reverse().map(p=>{let c=C.find(x=>x.id===p.cid)||{};return `<tr><td>${p.date}</td><td>${c.name||p.cid}</td><td>${p.receipt}</td><td>${money(p.amount)}</td></tr>`}).join("")||"<tr><td colspan=4>No payments</td></tr>";renderLedger()}
+function renderLedger(){let q=($("find")?.value||"").toLowerCase();$("ledgerBody").innerHTML=C.filter(c=>(c.id+" "+c.name+" "+c.mobile).toLowerCase().includes(q)).map(c=>`<tr><td>${c.id}</td><td>${c.name}</td><td>${c.mobile}</td><td>${c.scheme}</td><td>${money(c.amount)}</td><td>${money(P.filter(p=>p.cid===c.id).reduce((s,p)=>s+p.amount,0))}</td></tr>`).join("")||"<tr><td colspan=6>No customers</td></tr>"}
+function backup(){let b=new Blob([JSON.stringify({customers:C,payments:P},null,2)],{type:"application/json"}),a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="nigar-backup.json";a.click()}
+function wipe(){if(confirm("Delete all local customer and payment data?")){C=[];P=[];save();render()}}
+async function install(){if(deferred){deferred.prompt();await deferred.userChoice;deferred=null}else alert("If your browser supports installation, use the browser menu and choose Add to Home screen.")}
+$("cdate").value=new Date().toISOString().slice(0,10);$("pd").value=$("cdate").value;show();
+</script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+}
+</script></body></html>

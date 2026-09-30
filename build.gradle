@@ -1,3 +1,27 @@
 plugins {
-    id 'com.android.application' version '8.7.3' apply false
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.nigar.goldsavings'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId 'com.nigar.goldsavings'
+        minSdk 24
+        targetSdk 35
+        versionCode 1
+        versionName '1.0'
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+        }
+        release {
+            minifyEnabled false
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
 }

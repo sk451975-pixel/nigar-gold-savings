@@ -36,18 +36,17 @@ jobs:
       - name: Check project files
         run: |
           echo "===== PROJECT FILES ====="
-          find . -maxdepth 3 -type f | sort
+          find . -maxdepth 4 -type f | sort
           echo "========================"
 
       - name: Check Gradle files
         run: |
           echo "===== GRADLE FILES ====="
-          find . -maxdepth 3 -type f \( \
+          find . -maxdepth 4 -type f \( \
             -name "build.gradle" -o \
             -name "build.gradle.kts" -o \
             -name "settings.gradle" -o \
-            -name "settings.gradle.kts" -o \
-            -name "gradlew" \
+            -name "settings.gradle.kts" \
           \) -print
           echo "========================"
 
@@ -62,8 +61,7 @@ jobs:
 
       - name: Build APK
         run: |
-          chmod +x gradlew
-          ./gradlew assembleDebug --no-daemon --stacktrace --refresh-dependencies
+          gradle assembleDebug --no-daemon --stacktrace --refresh-dependencies
 
       - name: Find APK
         run: |

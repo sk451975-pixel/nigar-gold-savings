@@ -1,9 +1,9 @@
 {
-  "name": "Nigar Gems & Jewellers - Gold Savings",
-  "short_name": "Nigar Gold",
+  "name": "NIGAR Gems & Jewellers - Gold Savings",
+  "short_name": "NIGAR Gold",
   "start_url": "./",
   "display": "standalone",
-  "background_color": "#f7f0e7",
-  "theme_color": "#65000b",
-  "icons": [{"src":"logo.jpg","sizes":"512x512","type":"image/jpeg"}]
+  "background_color": "#fffaf7",
+  "theme_color": "#6d071a",
+  "icons": []
 }

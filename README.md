@@ -1,30 +1,27 @@
-# Nigar Gems & Jewellers — Gold Savings Business System v3
+# NIGAR Gems & Jewellers – Gold Savings App
 
-Production-ready web app architecture using Supabase Auth + PostgreSQL + Row Level Security, with optional WhatsApp Cloud API sending through a Supabase Edge Function.
+This is a mobile-friendly PWA frontend for the NIGAR Gold Savings business system.
 
-## Business details
-- Nigar Gems & Jewellers
-- Kafla Bazar, Cuttack, Odisha
-- 7978786142
-- nigarjewellers.in@gmail.com
-- GSTIN: 21AGAFS5666G1Z0
-- Schemes: Nigar Arambh, Nigar Unnati, Nigar Sikhar
-- Durations: 7, 12, 24 months
-- Instalments: ₹1,000; ₹2,000; ₹3,000; ₹5,000; ₹10,000; ₹20,000; ₹25,000; ₹30,000; ₹35,000; ₹50,000; ₹1,00,000; ₹2,00,000
+## Included modules
+1. Customer profile
+2. Nominee
+3. ID proof
+4. Address
+5. Add payment
+6. Customer passbook
+7. Receipt / Print / PDF
+8. WhatsApp
+9. Ledger
+10. Reports
+11. Admin / Staff permissions
 
-## Setup
-1. Create a Supabase project.
-2. Run `supabase/schema.sql` in Supabase SQL Editor.
-3. In Supabase Authentication, create your first user. Then insert/update their profile role to `admin` using the SQL shown at the bottom of schema.sql.
-4. Edit `config.js` with your Supabase project URL and publishable/anon key.
-5. Deploy the folder to GitHub Pages, Netlify, Cloudflare Pages, etc.
-6. Optional WhatsApp automation: deploy `supabase/functions/send-whatsapp` as an Edge Function and add its secrets. See `supabase/WHATSAPP_SETUP.md`.
+## Supabase setup
+1. Copy `config.example.js` to `config.js`.
+2. Put your Supabase project URL and publishable/anon key in `config.js`.
+3. Do NOT use a `service_role` key in the browser.
+4. Your existing SQL upgrade should be run in Supabase SQL Editor first.
+5. Open `index.html` through GitHub Pages/Netlify/Cloudflare Pages (not by double-clicking if the browser blocks modules).
+6. Create staff users in Supabase Authentication.
 
-## Security
-- Browser uses only the publishable/anon key.
-- Customer/payment tables have RLS policies.
-- Staff/admin roles are stored in `profiles` and checked by database policies.
-- Never expose a Supabase service_role key in the website.
-
-## WhatsApp
-The app can always open WhatsApp with a pre-filled payment message. For server-side automatic sending, configure Meta WhatsApp Cloud API and the Edge Function. Meta may require an approved message template outside the customer-service window.
+## Important
+The frontend intentionally does not delete or overwrite existing customer/payment records. Before production, verify the exact column names and RLS policies in your existing database.

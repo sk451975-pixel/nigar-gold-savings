@@ -1,6 +1,5 @@
-// Copy this file as config.js and put ONLY your Supabase project URL
-// and publishable/anon key here. Never put a service_role key in this file.
+// Nigar Gems & Jewellers — Supabase configuration
 window.NIGAR_CONFIG = {
-  SUPABASE_URL: "https://YOUR-PROJECT.supabase.co",
-  SUPABASE_ANON_KEY: "YOUR_PUBLISHABLE_OR_ANON_KEY"
+  SUPABASE_URL: "https://ewzmbntghuylksresut.supabase.co",
+  SUPABASE_ANON_KEY: "sb_publishable_29qh7wJSsQECA6YTAFIxSg_yTO1jvFN"
 };

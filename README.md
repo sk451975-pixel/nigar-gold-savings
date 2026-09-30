@@ -1,27 +1,15 @@
-# NIGAR Gems & Jewellers – Gold Savings App
+# NIGAR Gold Savings Android App
 
-This is a mobile-friendly PWA frontend for the NIGAR Gold Savings business system.
+This is an Android WebView app wrapping the offline NIGAR Gold Savings business app.
 
-## Included modules
-1. Customer profile
-2. Nominee
-3. ID proof
-4. Address
-5. Add payment
-6. Customer passbook
-7. Receipt / Print / PDF
-8. WhatsApp
-9. Ledger
-10. Reports
-11. Admin / Staff permissions
+Default login: `admin` / `1234`
 
-## Supabase setup
-1. Copy `config.example.js` to `config.js`.
-2. Put your Supabase project URL and publishable/anon key in `config.js`.
-3. Do NOT use a `service_role` key in the browser.
-4. Your existing SQL upgrade should be run in Supabase SQL Editor first.
-5. Open `index.html` through GitHub Pages/Netlify/Cloudflare Pages (not by double-clicking if the browser blocks modules).
-6. Create staff users in Supabase Authentication.
+## Build an installable APK
 
-## Important
-The frontend intentionally does not delete or overwrite existing customer/payment records. Before production, verify the exact column names and RLS policies in your existing database.
+1. Upload all files in this folder to your GitHub repository.
+2. Open **Actions** → **Build NIGAR Gold Savings APK**.
+3. Run the workflow (or push to `main`).
+4. Open the completed workflow → **Artifacts** → download `NIGAR-Gold-Savings-APK`.
+5. Extract the APK and install it on your Android phone.
+
+The app stores its business data locally on the phone/browser storage. No Supabase configuration is required for this version.

@@ -1,15 +1,12 @@
-# NIGAR Gold Savings Android App
+# NIGAR Gold Savings Android wrapper
 
-This is an Android WebView app wrapping the offline NIGAR Gold Savings business app.
+This folder adds a small Android WebView wrapper around the existing web app in the repository root.
 
-Default login: `admin` / `1234`
+The GitHub Actions workflow copies:
+- index.html
+- styles.css
+- app.js
+- config.js
+and optional web assets into the Android APK, then builds `app-debug.apk`.
 
-## Build an installable APK
-
-1. Upload all files in this folder to your GitHub repository.
-2. Open **Actions** → **Build NIGAR Gold Savings APK**.
-3. Run the workflow (or push to `main`).
-4. Open the completed workflow → **Artifacts** → download `NIGAR-Gold-Savings-APK`.
-5. Extract the APK and install it on your Android phone.
-
-The app stores its business data locally on the phone/browser storage. No Supabase configuration is required for this version.
+Do not put a Supabase service-role/secret key in the web app. A Supabase anon/publishable key is designed for client-side use, with database access controlled by Supabase RLS policies.

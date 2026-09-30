@@ -37,7 +37,7 @@ jobs:
         run: |
           echo "===== PROJECT FILES ====="
           find . -maxdepth 3 -type f | sort
-          echo "========================="
+          echo "========================"
 
       - name: Check Gradle files
         run: |
@@ -62,7 +62,8 @@ jobs:
 
       - name: Build APK
         run: |
-          gradle assembleDebug --no-daemon --stacktrace
+          chmod +x gradlew
+          ./gradlew assembleDebug --no-daemon --stacktrace --refresh-dependencies
 
       - name: Find APK
         run: |

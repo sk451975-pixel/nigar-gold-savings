@@ -14,5 +14,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "NIGAR-Gold-Savings"
-include(":app")
+rootProject.name = 'NIGAR-Gold-Savings'
+include ':app'

@@ -37,7 +37,7 @@ jobs:
         run: |
           echo "===== PROJECT FILES ====="
           find . -maxdepth 4 -type f | sort
-          echo "========================"
+          echo "========================="
 
       - name: Check Gradle files
         run: |
@@ -50,7 +50,7 @@ jobs:
           \) -print
           echo "========================"
 
-      - name: Setup Gradle 8.9
+      - name: Set up Gradle 8.9
         uses: gradle/actions/setup-gradle@v6
         with:
           gradle-version: '8.9'
@@ -59,20 +59,25 @@ jobs:
         run: |
           gradle --version
 
+      - name: Check Gradle tasks
+        run: |
+          echo "===== AVAILABLE APP TASKS ====="
+          gradle :app:tasks --all --no-daemon
+          echo "================================"
+
       - name: Build APK
         run: |
-          gradle assembleDebug --no-daemon --stacktrace --refresh-dependencies
+          gradle :app:assembleDebug --no-daemon --stacktrace --refresh-dependencies
 
       - name: Find APK
         run: |
           echo "===== APK FILES ====="
           find . -type f -name "*.apk" -print
-          echo "====================="
+          echo "===================="
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: NIGAR-Gold-Savings-APK
-          path: |
-            **/build/outputs/apk/debug/*.apk
+          path: app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error

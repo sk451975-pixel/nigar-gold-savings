@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#6d071a">
+  <link rel="manifest" href="manifest.json">
+  <title>NIGAR Gems & Jewellers</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <button id="menuBtn" class="icon-btn">☰</button>
+  <div class="brand">
+    <div class="brand-mark">◆</div>
+    <div><b>NIGAR</b><small>GEMS & JEWELLERS</small></div>
+  </div>
+  <button id="logoutBtn" class="icon-btn hidden">↪</button>
+</header>
+
+<div id="loginView" class="view login-view">
+  <div class="card login-card">
+    <div class="brand-large">◆</div>
+    <h1>NIGAR Gems & Jewellers</h1>
+    <p>Gold Savings Business System</p>
+    <input id="email" type="email" placeholder="Staff email">
+    <input id="password" type="password" placeholder="Password">
+    <button id="loginBtn" class="primary">Login</button>
+    <p id="loginMsg" class="msg"></p>
+  </div>
+</div>
+
+<div id="appView" class="hidden">
+  <aside id="sidebar" class="sidebar">
+    <button data-page="dashboard">🏠 Dashboard</button>
+    <button data-page="customers">👤 Customers</button>
+    <button data-page="nominee">👨‍👩‍👧 Nominee</button>
+    <button data-page="idproof">🪪 ID Proof</button>
+    <button data-page="address">🏠 Address</button>
+    <button data-page="payments">💰 Add Payment</button>
+    <button data-page="passbook">📖 Passbook</button>
+    <button data-page="receipts">🧾 Receipt / PDF</button>
+    <button data-page="whatsapp">📱 WhatsApp</button>
+    <button data-page="ledger">📚 Ledger</button>
+    <button data-page="reports">📊 Reports</button>
+    <button data-page="staff">👨‍💼 Admin / Staff</button>
+  </aside>
+
+  <main id="main" class="main"></main>
+</div>
+
+<div id="toast" class="toast"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js?v=3"></script>
+<script src="app.js?v=3"></script>
